@@ -9,6 +9,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="">
+        <form method="post" action="{{ route('posts.create') }}">
+            @csrf
+            <label for="post">New post</label>
+            <textarea name="post" id="post"></textarea>
+            <button type="submit">Create</button>
+        </form>
         {!! $posts !!}
     </body>
 </html>
