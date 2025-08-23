@@ -1,11 +1,176 @@
-@import 'tailwindcss';
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+:root {
+    /* Font */
+    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+    /* Colors */
+    --neutral-200: 229, 229, 229;
+    --neutral-600: 82, 82, 82;
+    --neutral-800: 38, 38, 38;
+}
+
+.app {
+    max-width: 25rem;
+    padding: 0 1rem;
+    margin: 5rem auto;
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    line-height: 160%;
+    color: rgb(var(--neutral-800), .77);
+}
+
+.app__title {
+    margin-bottom: 5rem;
+}
+
+.app__main {
+    margin-top: 5rem;
+}
+
+.app__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.app__label {
+    margin-bottom: .25rem;
+}
+
+.app__textarea {
+    height: 15rem;
+    padding: 1rem;
+    border: 1px solid rgb(var(--neutral-200));
+    border-radius: .25rem;
+}
+
+.app__textarea:hover, .app__input:hover {
+    border: 1px solid rgb(var(--neutral-800));
+}
+
+.app__textarea:focus, .app__input:focus {
+    outline: none;
+    border: 1px solid rgb(var(--neutral-800));
+    box-shadow: 0 0 0 3px rgb(var(--neutral-200));
+}
+
+.app__input {
+    padding: .625rem .75rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgb(var(--neutral-200));
+    border-radius: .25rem;
+}
+
+.app__button {
+    width: max-content;
+    padding: .625rem .75rem;
+    margin-top: 1rem;
+    color: white;
+    background: rgb(var(--neutral-800));
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+
+.app__button:hover {
+    opacity: .75;
+}
+
+.app__button:active {
+    transform: scale(.95);
+}
+
+p, ul, ol, pre, blockquote {
+    margin: 1rem 0;
+}
+
+a:hover {
+    opacity: 50%;
+}
+
+ul {
+    list-style-type: '- ';
+}
+
+ol {
+    list-style-type: numeric;
+}
+
+pre {
+    width: 27rem;
+    padding: 1rem;
+    margin: 0 -1rem;
+    background: rgb(var(--neutral-200), .25);
+}
+
+blockquote {
+    font-style: italic;
+    margin-left: 1rem;
+}
+
+pre code {
+    padding: 0;
+    background: none;
+}
+
+code {
+    padding: .125rem .25rem;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    background: rgba(var(--neutral-200), .5);
+}
+
+hr {
+    height: 0px;
+    margin: 4rem 0;
+    border: none;
+    border-bottom: 0.0625rem solid rgb(var(--neutral-200));
 }

@@ -9,6 +9,10 @@ class CreatePostController extends Controller
 {
     public function __invoke(Request $request)
     {
+        $request->validate([
+            'post' => ['required'],
+        ]);
+
         $post = $request->post;
         $content = Storage::disk('public')->get('posts.md');
 

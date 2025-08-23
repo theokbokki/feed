@@ -1,12 +1,14 @@
 <x-layout>
-    <h1>Feed</h1>
+    <h1 class="app__title">Feed</h1>
     @auth()
-        <form method="post" action="{{ route('posts.create') }}">
+        <form method="post" action="{{ route('posts.create') }}" class="app__form">
             @csrf
-            <label for="post">New post</label>
-            <textarea name="post" id="post"></textarea>
-            <button type="submit">Create</button>
+            <label for="post" class="app__label">New post</label>
+            <textarea name="post" id="post" class="app__textarea"></textarea>
+            <button type="submit" class="app__button">Create</button>
         </form>
     @endauth
-    {!! $posts !!}
+    <main class="app__main">
+        {!! $posts !!}
+    </main>
 </x-layout>
