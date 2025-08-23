@@ -66,6 +66,7 @@ table {
     font-size: .875rem;
     line-height: 160%;
     color: rgb(var(--neutral-800), .77);
+    text-wrap: pretty;
 }
 
 .app__title {

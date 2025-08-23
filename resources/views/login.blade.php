@@ -16,6 +16,6 @@
             <label for="remember" class="app__label">Remember me</label>
             <input type="checkbox" name="remember" id="remember" @checked(old('remember') === 'on') class="app__checkbox">
         </div>
-        <button type="submit" class="app__button">Create</button>
+        <button type="submit" class="app__button">Submit</button>
     </form>
 </x-layout>
