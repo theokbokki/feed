@@ -19,7 +19,7 @@ class App {
     }
 
     setupQuill() {
-        this.toolbarOptions = [['image']];
+        this.toolbarOptions = [['image', 'link']];
 
         this.options = {
             modules: {
