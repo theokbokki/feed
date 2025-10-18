@@ -175,3 +175,8 @@ hr {
     border: none;
     border-bottom: 0.0625rem solid rgb(var(--neutral-200));
 }
+
+img {
+    max-width: 100%;
+    margin: 1rem 0; /* 16px */
+}

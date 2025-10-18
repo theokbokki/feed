@@ -4,7 +4,7 @@
         <form method="post" action="{{ route('posts.create') }}" class="app__form">
             @csrf
             <label for="post" class="app__label">New post</label>
-            <textarea name="post" id="post" class="app__textarea"></textarea>
+            <div id="editor"></div>
             <button type="submit" class="app__button">Create</button>
         </form>
     @endauth
