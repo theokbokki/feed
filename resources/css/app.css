@@ -87,6 +87,7 @@ table {
 .app__form {
     display: flex;
     flex-direction: column;
+    margin-top: 2.5rem;
 }
 
 .app__label {
@@ -136,6 +137,17 @@ table {
     transform: scale(.95);
 }
 
+.app__preview {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.app__preview img {
+    height: 4rem;
+    object-fit: contain;
+}
+
 .posts {
     display: flex;
     flex-direction: column;
@@ -158,6 +170,7 @@ table {
     padding: .5rem 0.75rem;
     background: rgb(var(--neutral-200), .5);
     max-width: 20rem;
+    width: max-content;
     border-radius: 1rem;
 }
 
@@ -194,9 +207,12 @@ table {
     transform: rotate(4deg);
 }
 
-.post__attachment:nth-of-type(even) {
-    transform: rotate(-4deg);
-    transform: translateX(5rem);
+.post--left .post__attachment:nth-of-type(even) {
+    transform: rotate(-2deg) translateX(5rem);
+}
+
+.post--right .post__attachment:nth-of-type(even) {
+    transform: rotate(-2deg) translateX(-5rem);
 }
 
 .post__attachment:last-of-type {

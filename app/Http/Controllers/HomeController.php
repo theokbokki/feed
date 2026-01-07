@@ -16,6 +16,6 @@ class HomeController extends Controller
                 ->groupBy(function ($post) {
                     return $post->created_at->format('Y-m-d');
                 }),
-        ]);
+        ])->withFragment('latest');
     }
 }
