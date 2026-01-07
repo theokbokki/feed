@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Post;
 
 class CreatePostController extends Controller
 {
@@ -13,12 +14,9 @@ class CreatePostController extends Controller
             'post' => ['required'],
         ]);
 
-        $post = $request->post;
-        $content = Storage::disk('public')->get('posts.md');
-
-        $combined = $post."\n\n---\n\n".$content;
-
-        Storage::disk('public')->put('posts.md', $combined);
+        Post::create([
+            'content' => $request->post,
+        ]);
 
         return back();
     }

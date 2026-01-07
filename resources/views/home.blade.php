@@ -9,6 +9,11 @@
         </form>
     @endauth
     <main class="app__main">
-        {!! $posts !!}
+        @foreach($posts as $post)
+            {!! $post->content !!}
+            @if (!$loop->last)
+                <hr>
+            @endif
+        @endforeach
     </main>
 </x-layout>
