@@ -4,5 +4,5 @@
             <img class="post__attachment" src="{{ $attachment->src }}" alt=""/>
         @endforeach
     @endif
-    <p class="post__content">{{ $post->content }}</p>
+    <p class="post__content">{!! nl2br($post->content) !!}</p>
 </div>
