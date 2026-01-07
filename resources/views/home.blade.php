@@ -4,16 +4,13 @@
         <form method="post" action="{{ route('posts.create') }}" class="app__form">
             @csrf
             <label for="post" class="app__label">New post</label>
-            <div id="editor"></div>
+            <textarea id="content" name="content"></textarea>
             <button type="submit" class="app__button">Create</button>
         </form>
     @endauth
     <main class="app__main">
         @foreach($posts as $post)
             {!! $post->content !!}
-            @if (!$loop->last)
-                <hr>
-            @endif
         @endforeach
     </main>
 </x-layout>
