@@ -54,8 +54,10 @@ table {
 
     /* Colors */
     --neutral-200: 229, 229, 229;
-    --neutral-600: 82, 82, 82;
+    --neutral-300: 212, 212, 212;
+    --neutral-400: 161, 161, 161;
     --neutral-500: 115, 115, 115;
+    --neutral-600: 82, 82, 82;
     --neutral-800: 38, 38, 38;
     --orange: 255, 105, 0;
     --white: 255, 255, 255;
@@ -94,18 +96,11 @@ table {
     margin-bottom: .25rem;
 }
 
-.app__textarea {
-    height: 15rem;
-    padding: 1rem;
-    border: 1px solid rgb(var(--neutral-200));
-    border-radius: .25rem;
-}
-
-.app__textarea:hover, .app__input:hover {
+.app__input:hover {
     border: 1px solid rgb(var(--neutral-800));
 }
 
-.app__textarea:focus, .app__input:focus {
+.app__input:focus {
     outline: none;
     border: 1px solid rgb(var(--neutral-800));
     box-shadow: 0 0 0 3px rgb(var(--neutral-200));
@@ -135,17 +130,6 @@ table {
 
 .app__button:active {
     transform: scale(.95);
-}
-
-.app__preview {
-    display: flex;
-    gap: .5rem;
-    margin-top: 1rem;
-}
-
-.app__preview img {
-    height: 4rem;
-    object-fit: contain;
 }
 
 .posts {
@@ -187,6 +171,7 @@ table {
 .post--right .post__content {
     background: rgb(var(--orange));
     color: rgb(var(--white));
+    margin-left: auto;
 }
 
 .post__attachment {
@@ -215,7 +200,7 @@ table {
     transform: rotate(-2deg) translateX(-5rem);
 }
 
-.post__attachment:last-of-type {
+.post__attachment:last-of-type, .post--right .post__attachment:last-of-type {
     transform: rotate(0);
 }
 
@@ -226,4 +211,65 @@ table {
 .post--left + .post--right,
 .post--right + .post--left {
     margin-top: .5rem;
+}
+
+.post__form {
+    display: flex;
+    margin-top: .5rem;
+    position: relative;
+    align-items: center;
+    gap: .5rem;
+}
+
+.post__textarea {
+    padding: .75rem 1rem;
+    border: 1px solid rgb(var(--neutral-200));
+    border-radius: 1.5rem;
+    width: 100%;
+    resize: none;
+    field-sizing: content;
+}
+
+.post__textarea:hover {
+    border: 1px solid rgb(var(--neutral-400));
+}
+
+.post__textarea:focus {
+    outline: unset;
+    border: 1px solid rgb(var(--neutral-400));
+}
+
+.post__preview {
+    display: flex;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.post__preview img {
+    height: 5rem;
+    object-fit: contain;
+    border-radius: 1rem;
+}
+
+.post__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: auto 0 .3rem;
+    min-width: 2rem;
+    aspect-ratio: 1/1;
+    background: rgb(var(--neutral-200));
+    border: none;
+    border-radius: 50%;
+    color: rgb(var(--neutral-600));
+}
+
+.post__button--create {
+    bottom: .3rem;
+    margin: 0;
+    position: absolute;
+    right: .4rem;
+    background: rgb(var(--orange));
+    color: rgb(var(--white));
 }
