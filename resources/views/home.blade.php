@@ -1,3 +1,5 @@
+@use(Carbon\Carbon)
+
 <x-layout>
     <header class="header">
         <h1 class="sro">Théoo's feed</h1>
@@ -13,7 +15,7 @@
         <section class="posts">
             @foreach($groups as $date => $posts)
                 <h2 class="posts__date">
-                    {{ \Carbon\Carbon::parse($date)->format('D d M') }}
+                    {{ ($date = Carbon::parse($date))->year > 2025 ? $date->format('D d M') : 2025 }}
                 </h2>
                 <div class="posts__group">
                     @foreach($posts as $post)
