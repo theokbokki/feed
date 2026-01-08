@@ -37,7 +37,6 @@
                 <input type="file"
                     id="fileInput"
                     accept="image/*"
-                    capture
                     hidden>
                 <button type="submit" class="post__button post__button--create">
                     <span class="sro">Create</span>
