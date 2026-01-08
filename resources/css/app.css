@@ -245,7 +245,7 @@ table {
     margin-top: 1rem;
 }
 
-.post__preview img {
+.post__thumb {
     height: 5rem;
     object-fit: contain;
     border-radius: 1rem;

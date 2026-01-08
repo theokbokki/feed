@@ -2,34 +2,34 @@ import './bootstrap';
 
 class App {
     constructor() {
-        this.files = [];
+        this.init();
+        this.getElements();
 
+        if (!this.form) return;
+
+        this.setEvents();
+        this.scrollToBottom();
+    }
+
+    init() {
+        this.files = [];
+    }
+
+    getElements() {
         this.form = document.getElementById('postForm');
         this.fileInput = document.getElementById('fileInput');
         this.addImageBtn = document.getElementById('addImageBtn');
         this.preview = document.getElementById('preview');
-
-        if (!this.form) return;
-
-        this.bindEvents();
     }
 
-    bindEvents() {
-        this.addImageBtn.addEventListener('click', () => {
-            this.fileInput.click();
-        });
+    setEvents() {
+        this.addImageBtn.addEventListener('click', () => this.fileInput.click());
 
-        this.fileInput.addEventListener('change', () => {
-            this.handleFiles();
-        });
+        this.fileInput.addEventListener('change', this.handleFiles.bind(this));
 
-        this.form.addEventListener('paste', (e) => {
-            this.handlePaste(e);
-        });
+        this.form.addEventListener('paste', this.handlePaste.bind(this));
 
-        this.form.addEventListener('submit', (e) => {
-            this.handleSubmit(e);
-        });
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
     }
 
     async handleFiles() {
@@ -37,6 +37,7 @@ class App {
 
         for (const file of this.fileInput.files) {
             if (!file.type.startsWith('image/')) continue;
+
             await this.processAndAddFile(file);
         }
 
@@ -45,6 +46,7 @@ class App {
 
     async handlePaste(e) {
         const items = e.clipboardData?.items;
+
         if (!items) return;
 
         for (const item of items) {
@@ -60,10 +62,8 @@ class App {
     }
 
     async processAndAddFile(file) {
-        // Resize + convert to WebP
         const optimized = await this.resizeImage(file, 480);
 
-        // Prevent duplicates
         if (this.files.some(f => f.name === optimized.name && f.size === optimized.size)) {
             return;
         }
@@ -77,9 +77,7 @@ class App {
             const img = new Image();
             const reader = new FileReader();
 
-            reader.onload = (e) => {
-                img.src = e.target.result;
-            };
+            reader.onload = (e) => img.src = e.target.result;
 
             img.onload = () => {
                 const scale = Math.min(1, maxWidth / img.width);
@@ -104,7 +102,7 @@ class App {
                         resolve(webpFile);
                     },
                     'image/webp',
-                    0.8 // quality (0–1)
+                    0.8
                 );
             };
 
@@ -122,12 +120,10 @@ class App {
         reader.onload = (e) => {
             const img = document.createElement('img');
             img.src = e.target.result;
-            img.classList.add('thumb');
+            img.classList.add('post__thumb');
             img.title = 'Click to remove';
 
-            img.addEventListener('click', () => {
-                this.removeFile(file, img);
-            });
+            img.addEventListener('click', () => this.removeFile(file, img));
 
             this.preview.appendChild(img);
         };
@@ -137,6 +133,7 @@ class App {
 
     removeFile(file, img) {
         this.files = this.files.filter(f => f !== file);
+
         img.remove();
     }
 
@@ -163,14 +160,19 @@ class App {
             this.preview.innerHTML = '';
             this.form.querySelector('textarea')?.focus();
             window.location.reload();
+            this.scrollToBottom();
         }
+    }
+
+    scrollToBottom() {
+        requestAnimationFrame(() => {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+            });
+        });
     }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
     new App();
-
-    document
-        .querySelector('.posts__group:last-of-type .post:last-of-type')
-        ?.scrollIntoView();
 });
