@@ -3,5 +3,5 @@ import.meta.glob([
     "../favicons/**.png",
     "../favicons/**.ico",
     "../favicons/**.webmanifest",
-    "../img/",
+    "../img/*",
 ]);
